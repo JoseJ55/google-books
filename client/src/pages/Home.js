@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Navbar from "../components/Navbar/Navbar";
 import Header from "../components/Header/Header";
@@ -6,12 +6,13 @@ import Search from "../components/Search/Search";
 import Saved from "../components/Saved/Saved";
 
 function Home() {
+    const [nav, setNav] = useState("search");
+
     return (
         <div>
-            <Navbar />
+            <Navbar setNav={setNav}/>
             <Header />
-            {/* <Search /> */}
-            <Saved />
+            {nav === "search" ? <Search /> : <Saved />}
         </div>
     )
 }

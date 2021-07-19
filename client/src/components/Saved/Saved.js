@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./style.css"
 
+import Book from "../Book/Book";
+
 function Saved() {
     const [fakeData, setFakeData] = useState([
         {
@@ -20,8 +22,19 @@ function Saved() {
     ])
 
     return(
-        <div id="Saved">
+        <div id="saved">
             <h2>Saved Books</h2>
+
+            {fakeData.map((data) => (
+                <Book 
+                    authors={data.authors}
+                    description={data.description}
+                    image={data.image}
+                    link={data.link}
+                    title={data.title}
+                    type={"type"}
+                />
+            ))}
         </div>
     )
 }

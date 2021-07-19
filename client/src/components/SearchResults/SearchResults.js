@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./style.css";
 
+import Book from "../Book/Book";
+
 function SearchResults(){
     const [fakeData, setFakeData] = useState([
         {
@@ -18,28 +20,19 @@ function SearchResults(){
             title: "The Hunger Games",
         }
     ])
-    
+
     return(
         <div id="searchResults">
             <h2>Results</h2>
             {fakeData.map((data) => (
-                <div className="searchedBook">
-                    <div className="bookData">
-                        <div className="bookInfo">
-                            <h3>{data.title}</h3>
-                            <a href={data.link}>Get the Book</a>
-                            <p>Written by {
-                                data.authors.length > 1 ? data.authors.map((author) => { return `${author},`}) : data.authors.map((author) => `${author}`)
-                            }</p>
-                        </div>
-                        <input type="button" value="View"/>
-                        <input type="button" value="Save"/>
-                    </div>
-                    <div className="bookDesc">
-                        <img src={data.image} alt={`${data.title} cover`}/>
-                        <p>{data.description}</p>
-                    </div>
-                </div>
+                <Book 
+                    authors={data.authors}
+                    description={data.description}
+                    image={data.image}
+                    link={data.link}
+                    title={data.title}
+                    type={"search"}
+                />
             ))}
         </div>
     )

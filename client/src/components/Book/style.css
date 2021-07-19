@@ -1,0 +1,45 @@
+.book {
+    display: flex;
+    flex-direction: column;
+    border: grey .3rem solid;
+    padding: 1vh 1vw;
+    margin: 1vh 0;
+}
+
+.bookData {
+    display: flex;
+    padding: 1vh 0;
+}
+
+.bookInfo {
+    width: 88%;
+}
+
+.bookInfo h3 {
+    padding: 1vh 0;
+}
+
+.bookInfo p {
+    padding: 1vh 0;
+}
+
+.bookData input {
+    width: 5%;
+    height: 4vh;
+    margin: 0 .5vw;
+}
+
+.bookDesc {
+    width: 100%;
+    display: flex;
+    padding: 1vh 0;
+}
+
+.bookDesc img{
+    width: fit-content;
+}
+
+.bookDesc p{
+    width: max-content;
+    padding: 1vh 2vw;
+}
