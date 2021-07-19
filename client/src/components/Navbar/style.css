@@ -1,0 +1,22 @@
+#navbar {
+    width: 100%;
+    display: flex;
+    border-bottom: grey .2rem solid;
+}
+
+#title {
+    width: fit-content;
+    padding: 2vh 1vw;
+}
+
+#navbar button {
+    align-items: center;
+    padding: 2vh 1vw;
+    border: none;
+    background: none;
+}
+
+#navbar button:hover {
+    background-color: blue;
+    cursor: pointer;
+}

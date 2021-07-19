@@ -1,0 +1,25 @@
+ #header{
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     margin: 3vh 0;
+ }
+
+ #headerArea {
+     width: 90%;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     border: grey .3rem solid;
+     font-size: 140%;
+     padding: 2vh 0;
+ }
+
+ #header h1{
+    padding: 1vh 0;
+ }
+
+ #header h2{
+     padding: 1vh 0;
+ }
