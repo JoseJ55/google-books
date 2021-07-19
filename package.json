@@ -1,0 +1,19 @@
+{
+  "name": "google-books",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoseJ55/google-books.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoseJ55/google-books/issues"
+  },
+  "homepage": "https://github.com/JoseJ55/google-books#readme"
+}
