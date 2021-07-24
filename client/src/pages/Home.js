@@ -5,7 +5,7 @@ import Header from "../components/Header/Header";
 import Search from "../components/Search/Search";
 import Saved from "../components/Saved/Saved";
 
-function Home() {
+function Home({ searchedBooks, setSearchedBooks }) {
     const [nav, setNav] = useState("search");
 
     return (

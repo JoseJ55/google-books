@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./assets/css/main.css"
 
 import Home from "./pages/Home";
-import BookProvider from "./bookContext";
+import { BookProvider } from "./bookContext";
 
 function App() {
   return (

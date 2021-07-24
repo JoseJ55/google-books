@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function Book({ authors, description, image, link, title, type }) {
+function Book({ id, authors, description, image, link, title, type }) {
     return(
         <div className="book">
             <div className="bookData">
