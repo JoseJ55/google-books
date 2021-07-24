@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const googleBooksSchema = new mongoose.Schema({
+    bookId: {
+        type: String,
+        required: true
+    },
     authors: {
         type: [String],
         required: true

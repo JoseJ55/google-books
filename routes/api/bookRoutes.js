@@ -11,14 +11,16 @@ router.get("/", async (req, res) => {
 })
 
 router.post("/", async (req, res) => {
+    // console.log(req.body)
     const books = new googleBooks({
-        authors: req.body.authors,
+        bookId: req.body.bookId,
+        authors: req.body.authors, 
         description: req.body.description,
         image: req.body.image,
         link: req.body.link,
         title: req.body.title
-
     })
+
     try {
         const newBooks = await books.save()
         res.status(200).json(newBooks)

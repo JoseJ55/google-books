@@ -12,7 +12,7 @@ function SearchResults(){
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=search-terms&maxResults=10&key=${process.env.REACT_APP_GOOGLE_BOOKS_KEY}`)
         .then((books) => {
             setSearchedBooks(books.data.items)
-            // console.log(books.data.items)
+            console.log(books.data.items)
         })
         .catch((err) => console.log(err))
     }, [])
