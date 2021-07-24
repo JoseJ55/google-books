@@ -8,9 +8,15 @@ function Book({ authors, description, image, link, title, type }) {
                 <div className="bookInfo">
                     <h3>{title}</h3>
                     <a href={link}>Get the Book</a>
+
+                    {authors == null ? 
+                    <p></p>
+                    : 
                     <p>Written by {
                         authors.length > 1 ? authors.map((author) => { return `${author},`}) : authors.map((author) => `${author}`)
                     }</p>
+                    }
+
                 </div>
                 <input type="button" value="View"/>
                 {type === "search" ? <input type="button" value="Save"/> : <input type="button" value="Delete"/>}
