@@ -1,21 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./style.css";
 import axios from "axios";
 
+import { SavedContext } from "./../../bookContext";
+
 function Book({ id, authors, description, image, link, title, type }) {
-    const viewStore = (url) => {
+    const { savedBooks, setSavedBooks } = useContext(SavedContext)
+
+    const viewStore = () => {
         // two ways to go to store for the book just in case. 
         // window.location.href = url
         window.open(link, "_blank")
     }
 
     const saveBook = async (sId, sAuthors, sDescription, sImage, sLink, sTitle) => {
-        // console.log(sId)
-        // console.log(sAuthors)
-        // console.log(sDescription)
-        // console.log(sImage)
-        // console.log(sLink)
-        // console.log(sTitle)
         try {
             await axios.post("http://localhost:3001/api/book", {
                 bookId: sId,
@@ -30,12 +28,27 @@ function Book({ id, authors, description, image, link, title, type }) {
         }
     }
 
+    const updateBooks = () => {
+        axios.get("http://localhost:3001/api/book/")
+        .then((response) => {
+            setSavedBooks(response.data)
+        })
+    }
+
+    const deleteBook = async (dId) => {
+        try{
+            await axios.delete(`http://localhost:3001/api/book/${dId}`);
+            updateBooks();
+        } catch (err) {
+            console.log("Could not Delete data!", err)
+        }
+    }
+
     return(
         <div className="book">
             <div className="bookData">
                 <div className="bookInfo">
                     <h3>{title}</h3>
-                    {/* <a href={link}>Get the Book</a> */}
 
                     {authors == null ? 
                     <p></p>
@@ -46,12 +59,10 @@ function Book({ id, authors, description, image, link, title, type }) {
                     }
 
                 </div>
-                {/* <Link to={link}> */}
                 <input type="button" value="View" onClick={() => viewStore(link)}/>
-                {/* </Link> */}
                 {type === "search" ? 
                     <input type="button" value="Save" onClick={() => saveBook(id, authors, description, image, link, title)}/> : 
-                    <input type="button" value="Delete"/>}
+                    <input type="button" value="Delete" onClick={() => deleteBook(id)}/>}
                 
             </div>
             <div className="bookDesc">

@@ -14,16 +14,17 @@ const db = mongoose.connection
 db.on("error", (error) => console.error(error))
 db.once("open", () => console.log("Connected to Database"))
 
+app.use(cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST", "DELETE"],
+    credentials: true,
+    optionsSuccessStatus: 200
+}))
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(routes)
-app.use(cors({
-    origin: ["http://localhost:3000"],
-    methods: ["GET", "POST"],
-    credentials: true,
-    optionsSuccessStatus: 200
-}))
+
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`)

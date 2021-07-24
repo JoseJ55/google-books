@@ -1,32 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useContext } from "react";
 import "./style.css"
+import axios from "axios";
 
 import Book from "../Book/Book";
+import { SavedContext } from "./../../bookContext";
 
 function Saved() {
-    const [fakeData, setFakeData] = useState([
-        {
-            authors: ["Suzanne Collins"],
-            description: "Set in a dark vision of the near future, a terrifying reality TV show is taking place. Twelve boys and twelve girls are forced to appear in a live event called The Hunger Games. There is only one rule: kill or be killed. When sixteen-year-old Katniss Everdeen steps forward to take her younger sister's place in the games, she sees it as a death sentence. But Katniss has been close to death before. For her, survival is second nature.",
-            image: "http://books.google.com/books/content?id=sazytgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-            link: "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api",
-            title: "The Hunger Games",
-        },
-        {
-            authors: ["Suzanne Collins"],
-            description: "Set in a dark vision of the near future, a terrifying reality TV show is taking place. Twelve boys and twelve girls are forced to appear in a live event called The Hunger Games. There is only one rule: kill or be killed. When sixteen-year-old Katniss Everdeen steps forward to take her younger sister's place in the games, she sees it as a death sentence. But Katniss has been close to death before. For her, survival is second nature.",
-            image: "http://books.google.com/books/content?id=sazytgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-            link: "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api",
-            title: "The Hunger Games",
-        }
-    ])
+    const { savedBooks, setSavedBooks } = useContext(SavedContext)
+
+    useEffect(() => {
+        axios.get("http://localhost:3001/api/book/")
+        .then((response) => {
+            setSavedBooks(response.data)
+        })
+    }, [])
 
     return(
         <div id="saved">
             <h2>Saved Books</h2>
 
-            {fakeData.map((data) => (
+            {savedBooks.map((data) => (
                 <Book 
+                    key={data.bookId}
+                    id={data.bookId}
                     authors={data.authors}
                     description={data.description}
                     image={data.image}
