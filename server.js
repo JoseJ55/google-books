@@ -1,10 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors")
 
 require("dotenv").config();
 
 const routes = require("./routes")
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true});
@@ -17,6 +18,12 @@ db.once("open", () => console.log("Connected to Database"))
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(routes)
+app.use(cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true,
+    optionsSuccessStatus: 200
+}))
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`)

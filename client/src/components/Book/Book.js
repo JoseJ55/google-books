@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import axios from "axios";
 
 function Book({ id, authors, description, image, link, title, type }) {
     const viewStore = (url) => {
@@ -8,13 +9,25 @@ function Book({ id, authors, description, image, link, title, type }) {
         window.open(link, "_blank")
     }
 
-    const saveBook = (sId, sAuthors, sDescription, sImage, sLink, sTitle) => {
-        console.log(sId)
-        console.log(sAuthors)
-        console.log(sDescription)
-        console.log(sImage)
-        console.log(sLink)
-        console.log(sTitle)
+    const saveBook = async (sId, sAuthors, sDescription, sImage, sLink, sTitle) => {
+        // console.log(sId)
+        // console.log(sAuthors)
+        // console.log(sDescription)
+        // console.log(sImage)
+        // console.log(sLink)
+        // console.log(sTitle)
+        try {
+            await axios.post("http://localhost:3001/api/book", {
+                bookId: sId,
+                authors: sAuthors,
+                description: sDescription,
+                image: sImage,
+                link: sLink,
+                title: sTitle
+            })
+        } catch (err){
+            console.log("Could not add Data!", err)
+        }
     }
 
     return(

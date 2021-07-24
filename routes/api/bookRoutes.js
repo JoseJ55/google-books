@@ -11,7 +11,6 @@ router.get("/", async (req, res) => {
 })
 
 router.post("/", async (req, res) => {
-    // console.log(req.body)
     const books = new googleBooks({
         bookId: req.body.bookId,
         authors: req.body.authors, 
@@ -30,7 +29,12 @@ router.post("/", async (req, res) => {
 })
 
 router.delete("/:id", async (req, res) => {
-
+    try{
+        await googleBooks.deleteOne({bookId: req.params.id})
+        res.status(200).json({message: "Deleted data!"})
+    } catch (err) {
+        res.status(400).json({message: err.message})
+    }
 })
 
 module.exports = router;
