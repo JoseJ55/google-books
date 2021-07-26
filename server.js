@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors")
+const cors = require("cors");
+const path = require("path");
 
 require("dotenv").config();
 
@@ -8,7 +9,7 @@ const routes = require("./routes")
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || process.env.DATABASE_URL, {useNewUrlParser: true});
 
 const db = mongoose.connection
 db.on("error", (error) => console.error(error))
@@ -21,9 +22,14 @@ app.use(cors({
     optionsSuccessStatus: 200
 }))
 
+app.use(express.static(path.join(__dirname, "./client/build")))
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(routes)
+
+if (process.env.NODE_ENV === 'production'){
+    app.use(express.static("client/build"))
+}
 
 
 app.listen(PORT, () => {
