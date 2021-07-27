@@ -9,6 +9,7 @@ const routes = require("./routes")
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+// Still need to config the database with heroku to push and access data.
 mongoose.connect(process.env.MONGODB_URI || process.env.DATABASE_URL, {useNewUrlParser: true});
 
 const db = mongoose.connection

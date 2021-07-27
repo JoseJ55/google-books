@@ -8,7 +8,7 @@ Once on the wbepage the user is able to view a small sample of random books for 
 
 The second part of the website is the save function where a user can view the their saved books to view in store or remove them fro the list.
 
-##LINKS
+## LINKS
 
 https://github.com/JoseJ55/google-books
 
