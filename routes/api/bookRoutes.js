@@ -6,7 +6,7 @@ router.get("/", async (req, res) => {
         const googlebooks = await googleBooks.find();
         res.json(googlebooks);
     } catch (error) {
-        res.status(500).json({message: error});
+        res.status(500).json({message: error.message});
     }
 })
 
