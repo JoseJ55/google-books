@@ -11,7 +11,7 @@ their saved books to view in store or remove them fro the list.
 
 ## Images
 
-![alt text](https://github.com/JoseJ55/google-books/blob/main/public/images/googleBooks.png?raw=true)
+![Application Image](https://github.com/JoseJ55/google-books/blob/main/client/public/images/googleBooks.png?raw=true)
 
 ## LINKS
 
