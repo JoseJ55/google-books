@@ -6,7 +6,12 @@ A program that allows the user to search books and either view them at the googl
 
 Once on the wbepage the user is able to view a small sample of random books for them to look at, but they are also able to search for their own books through the search bar. The user can search any title of books and the will recive the most relavent books to their title of choice. The user will then have an onption to view the google store and purchase the book or they can save the book to the mongoose database.
 
-The second part of the website is the save function where a user can view the their saved books to view in store or remove them fro the list.
+The second part of the website is the save function where a user can view the
+their saved books to view in store or remove them fro the list.
+
+## Images
+
+![alt text](https://github.com/JoseJ55/google-books/blob/main/public/images/googleBooks.png?raw=true)
 
 ## LINKS
 
