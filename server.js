@@ -11,7 +11,7 @@ const app = express();
 
 // Still need to config the database with heroku to push and access data.
 // mongoose.connect(process.env.MONGODB_URI || process.env.DATABASE_URL, {useNewUrlParser: true});
-mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true});
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection
 db.on("error", (error) => console.error(error))

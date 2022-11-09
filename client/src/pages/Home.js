@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Header from "../components/Header/Header";
 import Search from "../components/Search/Search";
 import Saved from "../components/Saved/Saved";
+import "./main.css";
 
 function Home({ searchedBooks, setSearchedBooks }) {
     const [nav, setNav] = useState("search");

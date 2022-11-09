@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import { FcGoogle } from "react-icons/fc";
 
 function Navbar({ setNav }) {
     const searchChange = () => {
@@ -11,9 +12,13 @@ function Navbar({ setNav }) {
     
     return(
         <div id="navbar">
-            <h2 id="title">Google Books</h2>
-            <button onClick={searchChange}>Search</button>
-            <button onClick={saveChange}>Saved</button>
+            <view id="navbar-content">
+                <h2 id="navbar-icon"><FcGoogle/></h2>
+                <view id="navbar-buttons">
+                    <button onClick={searchChange}>Search</button>
+                    <button onClick={saveChange}>Saved</button>
+                </view>
+            </view>
         </div>
     )
 }

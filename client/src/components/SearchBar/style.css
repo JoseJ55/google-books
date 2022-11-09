@@ -5,6 +5,7 @@
     border: grey .3rem solid;
     display: flex;
     flex-direction: column;
+    background-color: var(--primary-color);
 }
 
 #searchBar h2 {

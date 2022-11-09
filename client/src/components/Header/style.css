@@ -14,6 +14,7 @@
      border: grey .3rem solid;
      font-size: 140%;
      padding: 2vh 0;
+     background-color: var(--primary-color);
  }
 
  #header h1{
