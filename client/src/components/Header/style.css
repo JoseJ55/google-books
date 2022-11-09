@@ -1,26 +1,51 @@
- #header{
-     width: 100%;
-     display: flex;
-     justify-content: center;
-     margin: 3vh 0;
- }
+#header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 3vh 0;
+}
 
- #headerArea {
-     width: 90%;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     border: grey .3rem solid;
-     font-size: 140%;
-     padding: 2vh 0;
-     background-color: var(--primary-color);
- }
+#headerArea {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: grey .3rem solid;
+    font-size: 130%;
+    padding: 2vh 0;
+    background-color: var(--primary-color);
+    border-color: var(--secondary-color);
+    border-style: groove;
+    -moz-box-shadow: 5px 5px 3px var(--transparent-black);
+    -webkit-box-shadow: 5px 5px 3px var(--transparent-black);
+    box-shadow: 0 0 10px 2px var(--transparent-black);
+}
 
- #header h1{
-    padding: 1vh 0;
- }
+#header h1{
+padding: 1vh 0;
+}
 
- #header h2{
-     padding: 1vh 0;
- }
+#google-text {
+    font-family: "Red Hat Display";
+}
+
+#google-blue {
+    color: #4285F4;
+}
+
+#google-red {
+    color: #DB4437;
+}
+
+#google-yellow {
+    color: #F4B400;
+}
+
+#google-green {
+    color: #0F9D58;
+}
+
+#header h2{
+padding: 1vh 0;
+}
