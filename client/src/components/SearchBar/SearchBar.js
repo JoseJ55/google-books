@@ -30,8 +30,7 @@ function SearchBar() {
     return(
         <div id="searchBar">
             <h2>Book Search</h2>
-            <p>Book</p>
-            <input type="text" onChange={(e) => { setSearchText(e.target.value) }}/>
+            <input type="text" id="searchBar-text" onChange={(e) => { setSearchText(e.target.value) }}/>
             <input  onClick={search} id="searchSubmit" type="button" value="Search"/>
         </div>
     )

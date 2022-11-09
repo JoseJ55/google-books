@@ -2,10 +2,15 @@
     width: 88%;
     margin: auto;
     padding: 2vh 1vw;
-    border: grey .3rem solid;
+    border: var(--secondary-color) .3rem solid;
+    border-style: groove;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     background-color: var(--primary-color);
+    -moz-box-shadow: 0 0 10px 2px var(--transparent-black);
+    -webkit-box-shadow: 0 0 10px 2px var(--transparent-black);
+    box-shadow: 0 0 10px 2px var(--transparent-black);
 }
 
 #searchBar h2 {
@@ -16,11 +21,31 @@
     padding: 1vh 0;
 }
 
+#searchBar-text {
+    padding: 1vh 1vw;
+    font-size: 1rem;
+}
+
 #searchSubmit {
     width: fit-content;
     float: right;
     margin-left: auto;
     order: 2;
     margin-top: 1vh;
+    margin-right: 1vw;
     padding: 1vh 1vw;
+    font-size: .9rem;
+    font-family: "Red Hat Display";
+    border-color: var(--secondary-color);
+    border-radius: 5px;
+    background-color: var(--yellow);
+    transition-duration: 1s;
+}
+
+#searchSubmit:hover {
+    cursor: pointer;
+    background-color: var(--blue);
+    -webkit-transition: background-color 1s linear;
+    -ms-transition: background-color 1s linear;
+    transition: background-color 1s linear;
 }

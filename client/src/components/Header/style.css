@@ -17,8 +17,9 @@
     background-color: var(--primary-color);
     border-color: var(--secondary-color);
     border-style: groove;
-    -moz-box-shadow: 5px 5px 3px var(--transparent-black);
-    -webkit-box-shadow: 5px 5px 3px var(--transparent-black);
+    border-radius: 10px;
+    -moz-box-shadow: 0 0 10px 2px var(--transparent-black);
+    -webkit-box-shadow: 0 0 10px 2px var(--transparent-black);
     box-shadow: 0 0 10px 2px var(--transparent-black);
 }
 
@@ -31,19 +32,19 @@ padding: 1vh 0;
 }
 
 #google-blue {
-    color: #4285F4;
+    color: var(--blue);
 }
 
 #google-red {
-    color: #DB4437;
+    color: var(--red);
 }
 
 #google-yellow {
-    color: #F4B400;
+    color: var(--yellow);
 }
 
 #google-green {
-    color: #0F9D58;
+    color: var(--green);
 }
 
 #header h2{
