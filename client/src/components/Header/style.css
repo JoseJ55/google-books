@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
     border: grey .3rem solid;
-    font-size: 130%;
+    font-size: 120%;
     padding: 2vh 0;
     background-color: var(--primary-color);
     border-color: var(--secondary-color);
@@ -24,7 +24,8 @@
 }
 
 #header h1{
-padding: 1vh 0;
+    padding: 1vh 0;
+    font-family: "Noto Sans Display";
 }
 
 #google-text {
@@ -48,5 +49,7 @@ padding: 1vh 0;
 }
 
 #header h2{
-padding: 1vh 0;
+    padding: 1vh 0;
+    font-family: "Noto Sans Display";
+    font-size: 1.5rem;
 }

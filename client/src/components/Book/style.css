@@ -1,7 +1,7 @@
 .book {
     display: flex;
     flex-direction: column;
-    border: grey .3rem solid;
+    border: var(--secondary-color) .3rem groove;
     padding: 1vh 1vw;
     margin: 1vh 0;
 }
@@ -17,10 +17,14 @@
 
 .bookInfo h3 {
     padding: 1vh 0;
+    font-family: "Noto Sans Display";
+    font-size: 1.2rem;
 }
 
 .bookInfo p {
     padding: 1vh 0;
+    font-family: "Noto Sans Display";
+    font-size: 1rem;
 }
 
 .bookData input {
@@ -33,6 +37,8 @@
     width: 100%;
     display: flex;
     padding: 1vh 0;
+    font-family: "Noto Sans Display";
+    font-size: .9rem;
 }
 
 .bookDesc img{

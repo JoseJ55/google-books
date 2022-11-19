@@ -15,6 +15,8 @@
 
 #searchBar h2 {
     padding: 1vh 0;
+    font-family: "Noto Sans Display";
+    font-size: 1.5rem;
 }
 
 #searchBar p {

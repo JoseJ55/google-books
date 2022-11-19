@@ -4,12 +4,18 @@
     display: flex;
     flex-direction: column;
     padding: 1vh 1vw;
-    border: grey .3rem solid;
+    border: var(--secondary-color) .3rem groove;
+    border-radius: 10px;
     margin-top: 3vh;
     background-color: var(--primary-color);
+    -moz-box-shadow: 0 0 10px 2px var(--transparent-black);
+    -webkit-box-shadow: 0 0 10px 2px var(--transparent-black);
+    box-shadow: 0 0 10px 2px var(--transparent-black);
 }
 
 #searchResults h2 {
     width: 100%;
     padding: 2vh 0;
+    font-family: "Noto Sans Display";
+    font-size: 1.5rem;
 }
