@@ -9,7 +9,7 @@ function SearchResults(){
     const {searchedBooks, setSearchedBooks} = useContext(BookContext)
 
     useEffect(() => {
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=search-terms&maxResults=10&key=${process.env.REACT_APP_GOOGLE_BOOKS_KEY}`)
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=search-terms&maxResults=20&key=${process.env.REACT_APP_GOOGLE_BOOKS_KEY}`)
         .then((books) => {
             setSearchedBooks(books.data.items)
         })
@@ -19,20 +19,22 @@ function SearchResults(){
     return(
         <div id="searchResults">
             <h2>Results</h2>
-            {searchedBooks
-            .map((data) => (
-                <Book 
-                    key={data.id}
-                    id={data.id}
-                    authors={data.volumeInfo.authors}
-                    description={data.volumeInfo.description}
-                    image={data.volumeInfo.imageLinks.thumbnail}
-                    link={data.volumeInfo.infoLink}
-                    title={data.volumeInfo.title}
-                    type={"search"}
-                />
-            ))
-            }
+            <div id="searchResults-books">
+                {searchedBooks
+                .map((data) => (
+                    <Book 
+                        key={data?.id}
+                        id={data?.id}
+                        authors={data?.volumeInfo?.authors}
+                        description={data?.volumeInfo?.description}
+                        image={data?.volumeInfo?.imageLinks?.thumbnail}
+                        link={data?.volumeInfo?.infoLink}
+                        title={data?.volumeInfo?.title}
+                        type={"search"}
+                    />
+                ))
+                }
+            </div>
         </div>
     )
 }

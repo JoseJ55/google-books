@@ -1,51 +1,133 @@
 .book {
-    display: flex;
-    flex-direction: column;
-    border: var(--secondary-color) .3rem groove;
-    padding: 1vh 1vw;
-    margin: 1vh 0;
+    max-width: 88%;
+    margin: auto 6%;
+    height: inherit;
+    box-shadow: 0 0 10px 2px var(--transparent-black);
+    transition-duration: .5s;
+    position: relative;
+}
+
+.book:hover {
+    cursor: pointer;
+    scale: 130%;
+    transition-duration: .5s;
+    z-index: 100;
+}
+
+.bookImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.book:hover .bookData {
+    opacity: 1;
+    scale: 130%;
+    cursor: auto;
 }
 
 .bookData {
-    display: flex;
-    padding: 1vh 0;
-}
-
-.bookInfo {
-    width: 88%;
-}
-
-.bookInfo h3 {
-    padding: 1vh 0;
-    font-family: "Noto Sans Display";
-    font-size: 1.2rem;
-}
-
-.bookInfo p {
-    padding: 1vh 0;
-    font-family: "Noto Sans Display";
-    font-size: 1rem;
-}
-
-.bookData input {
-    width: 5%;
-    height: 4vh;
-    margin: 0 .5vw;
-}
-
-.bookDesc {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
     width: 100%;
+    opacity: 0;
+    transition: 1s ease;
+    background-color: white;
+    border: 1px solid var(--green);
+    border-radius: 3px;
     display: flex;
-    padding: 1vh 0;
-    font-family: "Noto Sans Display";
-    font-size: .9rem;
+    flex-direction: column;
 }
 
-.bookDesc img{
+.bookData h4 {
     width: fit-content;
+    font-family: "Noto Sans Display";
+    margin: 1vh 0 .5vh 1vw;
+    font-size: .8rem;
 }
 
-.bookDesc p{
-    width: max-content;
-    padding: 1vh 2vw;
+.bookData-author {
+    font-family: "Red Hat Display";
+    width: fit-content;
+    font-size: .6rem;
+    margin: 0 1vw .5vh 1vw;
+    flex-wrap: wrap;
+}
+
+.bookData-btn {
+    margin: 0 0 1vh 1vw;
+}
+
+.bookData-btn input {
+    margin-right: 1vw;
+    font-size: .5em;
+    padding: .3vh .5vw;
+    font-family: "Red Hat Display";
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    background-color: var(--yellow);
+    transition-duration: .5s;
+}
+
+.bookData-btn input:hover {
+    cursor: pointer;
+    background-color: var(--green);
+    -webkit-transition: background-color 1s linear;
+    -ms-transition: background-color 1s linear;
+    transition: background-color 1s linear;
+}
+
+.bookData-desc {
+    font-family: "Noto Sans Display";
+    font-size: .6em;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: inherit;
+    width: 88%;
+    margin: auto;
+    margin-bottom: 1vh;
+    flex-wrap: wrap;
+    padding: 1% 1%;
+}
+
+.bookData-desc::-webkit-scrollbar-track {
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 2px 0;
+}
+
+.bookData-desc::-webkit-scrollbar {
+    width: 5px;
+}
+
+.bookData-desc::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    border: 1px solid #000;
+}
+
+.bookData-desc::-webkit-scrollbar-thumb:hover {
+    background-color: var(--blue);
+}
+
+@media screen and (max-width: 500px) {
+    .bookData h4 {
+        font-size: .7rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .book:hover {
+        scale: 120%;
+    }
+    .book:hover .bookData {
+        scale: 120%;
+    }
+    .bookData h4 {
+        font-size: .7rem;
+    }
 }

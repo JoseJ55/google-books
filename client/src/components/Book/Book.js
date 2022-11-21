@@ -7,6 +7,12 @@ import { SavedContext } from "./../../bookContext";
 function Book({ id, authors, description, image, link, title, type }) {
     const { savedBooks, setSavedBooks } = useContext(SavedContext)
 
+    // const pic = new Image();
+    // pic.src = image;
+    // pic.onload= () => {
+    //     console.log(pic.height)
+    // }
+
     const viewStore = () => {
         // two ways to go to store for the book just in case. 
         // window.location.href = url
@@ -46,7 +52,34 @@ function Book({ id, authors, description, image, link, title, type }) {
 
     return(
         <div className="book">
+            <img className="bookImage" src={image} alt={`${title} cover`} />
+
             <div className="bookData">
+                <h4>{title}</h4>
+                {authors == null ? 
+                    <p></p>
+                    : 
+                    <p className="bookData-author">Written by {
+                        authors.length > 1 ? authors.map((author) => { return `${author},`}) : authors.map((author) => `${author}`)
+                    }</p>
+                }
+
+                <div className="bookData-btn">
+                    <input type="button" value="View" onClick={() => viewStore(link)}/>
+                    {type === "search" ? 
+                        <input type="button" value="Save" onClick={() => saveBook(id, authors, description, image, link, title)}/> : 
+                        <input type="button" value="Delete" onClick={() => deleteBook(id)}/>}
+                </div>
+
+                <div className="bookData-desc">
+                    {description == null || description === "" ?
+                    <p>There is not description sorry.</p>:
+                    <p>{description}</p>
+                    }
+                </div>
+            </div>
+
+            {/* <div className="bookData">
                 <div className="bookInfo">
                     <h3>{title}</h3>
 
@@ -68,7 +101,7 @@ function Book({ id, authors, description, image, link, title, type }) {
             <div className="bookDesc">
                 <img src={image} alt={`${title} cover`}/>
                 <p>{description}</p>
-            </div>
+            </div> */}
         </div>
     )
 }

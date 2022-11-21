@@ -51,3 +51,21 @@
     -ms-transition: background-color 1s linear;
     transition: background-color 1s linear;
 }
+
+@media screen and (min-width: 2000px) {
+    #searchBar {
+        width: 78%;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    #searchBar {
+        width: 78%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #searchBar h2 {
+        font-size: 1rem;
+    }
+}

@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
     border: grey .3rem solid;
-    font-size: 120%;
+    font-size: 110%;
     padding: 2vh 0;
     background-color: var(--primary-color);
     border-color: var(--secondary-color);
@@ -51,5 +51,35 @@
 #header h2{
     padding: 1vh 0;
     font-family: "Noto Sans Display";
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+}
+
+@media screen and (min-width: 2000px) {
+    #headerArea {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    #headerArea {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #headerArea {
+        font-size: 90%;
+    }
+    #header h2 {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #headerArea {
+        font-size: 75%;
+    }
+    #header h2 {
+        font-size: 1rem;
+    }
 }
