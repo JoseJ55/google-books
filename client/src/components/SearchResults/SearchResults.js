@@ -16,7 +16,7 @@ function SearchResults(){
             setSearchedBooks(books.data.items)
         })
         .catch((err) => console.log(err))
-    }, [])
+    }, [setSearchedBooks])
 
     const handelScroll = (event) => {
         if (resultRef.current) {
