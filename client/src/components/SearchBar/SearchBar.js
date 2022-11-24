@@ -10,9 +10,9 @@ function SearchBar() {
     const {searchText, setSearchText} = useContext(TextContext);
     const [q, setQ] = useState("")
 
-    const searchBook = () => {
+    const searchBook = async () => {
         try{
-            axios.get(`https://www.googleapis.com/books/v1/volumes?q=${q}&key=${process.env.REACT_APP_GOOGLE_BOOKS_KEY}`)
+            await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${q}&startIndex=0&maxResults=40&key=${process.env.REACT_APP_GOOGLE_BOOKS_KEY}`)
             .then((books) => {
                 setSearchedBooks(books.data.items)
             })

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import "./style.css";
 import axios from "axios";
 
@@ -8,6 +8,8 @@ import { BookContext } from "./../../bookContext";
 function SearchResults(){
     const {searchedBooks, setSearchedBooks} = useContext(BookContext)
 
+    const resultRef = useRef();
+
     useEffect(() => {
         axios.get(`https://www.googleapis.com/books/v1/volumes?q=search-terms&maxResults=20&key=${process.env.REACT_APP_GOOGLE_BOOKS_KEY}`)
         .then((books) => {
@@ -16,8 +18,19 @@ function SearchResults(){
         .catch((err) => console.log(err))
     }, [])
 
+    const handelScroll = (event) => {
+        if (resultRef.current) {
+            const { scrollTop, scrollHeight, clientHeight } = resultRef.current;
+
+            if(scrollTop + clientHeight === scrollHeight) {
+                alert("reach the bottom")
+            }
+        }
+
+    }
+
     return(
-        <div id="searchResults">
+        <div id="searchResults" onScroll={handelScroll} ref={resultRef}>
             <h2>Results</h2>
             <div id="searchResults-books">
                 {searchedBooks
