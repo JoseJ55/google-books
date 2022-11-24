@@ -13,7 +13,7 @@ function Saved() {
         .then((response) => {
             setSavedBooks(response.data)
         })
-    }, [])
+    }, [setSavedBooks])
 
     return(
         <div id="saved">
