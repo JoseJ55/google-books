@@ -4,7 +4,12 @@ const googleBooks = require("./../../models/books")
 router.get("/", async (req, res) => {
     try {
         const googlebooks = await googleBooks.find();
+        if (googlebooks.length === 0) {
+            res.json({})
+            return;
+        }
         res.json(googlebooks);
+        return;
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -24,14 +29,25 @@ router.post("/", async (req, res) => {
         const newBooks = await books.save()
         res.status(200).json(newBooks)
     } catch (err) {
-        res.status(400).json({message: err.message})
+        res.status(400).json({message: err.errors.title.properties.message})
     }
 })
 
 router.delete("/:id", async (req, res) => {
     try{
         await googleBooks.deleteOne({bookId: req.params.id})
-        res.status(200).json({message: "Deleted data!"})
+        .then((response) => {
+            if(response.deletedCount === 1) {
+                res.status(200).json({message: "Deleted data!"})
+                return;
+            }
+            if(response.deletedCount === 0) {
+                res.status(201).json({message: "Data does not exist!"})
+                return;
+            }
+            
+            throw "Could not delete data";
+        })
     } catch (err) {
         res.status(400).json({message: err.message})
     }

@@ -6,20 +6,16 @@ const googleBooksSchema = new mongoose.Schema({
         required: true
     },
     authors: {
-        type: [String],
-        required: true
+        type: [String]
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
     image: {
-        type: String,
-        required: true
+        type: String
     },
     link: {
-        type: String,
-        required: true,
+        type: String
     },
     title: {
         type: String,
