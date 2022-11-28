@@ -11,14 +11,20 @@ const app = express();
 
 // Still need to config the database with heroku to push and access data.
 // mongoose.connect(process.env.MONGODB_URI || process.env.DATABASE_URL, {useNewUrlParser: true});
-mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(
+    process.env.DATABASE_URL, 
+    {
+        useNewUrlParser: true, 
+        useFindAndModify: false, 
+        useUnifiedTopology: true
+    });
 
 const db = mongoose.connection
 db.on("error", (error) => console.error(error))
 db.once("open", () => console.log("Connected to Database"))
 
 app.use(cors({
-    origin: ["http://localhost:3002"],
+    origin: ["http://localhost:3002", "http://localhost:3001", "http://localhost:3000"],
     methods: ["GET", "POST", "DELETE"],
     credentials: true,
     optionsSuccessStatus: 200
