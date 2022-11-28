@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { SavedContext } from "./../../bookContext";
 
-function Book({ id, authors, description, image, link, title, type }) {
+function Book({ data, type, innerRef }) {
     const { savedBooks, setSavedBooks } = useContext(SavedContext)
 
     // const pic = new Image();
@@ -16,7 +16,7 @@ function Book({ id, authors, description, image, link, title, type }) {
     const viewStore = () => {
         // two ways to go to store for the book just in case. 
         // window.location.href = url
-        window.open(link, "_blank")
+        window.open(data?.volumeInfo?.infoLink, "_blank")
     }
 
     const saveBook = async (sId, sAuthors, sDescription, sImage, sLink, sTitle) => {
@@ -51,30 +51,30 @@ function Book({ id, authors, description, image, link, title, type }) {
     }
 
     return(
-        <div className="book">
-            <img className="bookImage" src={image} alt={`${title} cover`} />
+        <div className="book" ref={innerRef}>
+            <img className="bookImage" src={data?.volumeInfo?.imageLinks?.thumbnail} alt={`${data?.volumeInfo?.title} cover`} />
 
             <div className="bookData">
-                <h4>{title}</h4>
-                {authors == null ? 
+                <h4>{data?.volumeInfo?.title}</h4>
+                {data?.volumeInfo?.authors == null ? 
                     <p></p>
                     : 
                     <p className="bookData-author">Written by {
-                        authors.length > 1 ? authors.map((author) => { return `${author},`}) : authors.map((author) => `${author}`)
+                        data?.volumeInfo?.authors.length > 1 ? data?.volumeInfo?.authors.map((author) => { return `${author},`}) : data?.volumeInfo?.authors.map((author) => `${author}`)
                     }</p>
                 }
 
                 <div className="bookData-btn">
-                    <input type="button" value="View" onClick={() => viewStore(link)}/>
+                    <input type="button" value="View" onClick={() => viewStore(data?.volumeInfo?.infoLink)}/>
                     {type === "search" ? 
-                        <input type="button" value="Save" onClick={() => saveBook(id, authors, description, image, link, title)}/> : 
-                        <input type="button" value="Delete" onClick={() => deleteBook(id)}/>}
+                        <input type="button" value="Save" onClick={() => saveBook(data?.id, data?.volumeInfo?.authors, data?.volumeInfo?.description, data?.volumeInfo?.imageLinks?.thumbnail, data?.volumeInfo?.infoLink, data?.volumeInfo?.title)}/> : 
+                        <input type="button" value="Delete" onClick={() => deleteBook(data?.id)}/>}
                 </div>
 
                 <div className="bookData-desc">
-                    {description == null || description === "" ?
+                    {data?.volumeInfo?.description == null || data?.volumeInfo?.description === "" ?
                     <p>There is not description sorry.</p>:
-                    <p>{description}</p>
+                    <p>{data?.volumeInfo?.description}</p>
                     }
                 </div>
             </div>

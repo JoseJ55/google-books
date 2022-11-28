@@ -12,13 +12,13 @@ function Navbar({ setNav }) {
     
     return(
         <div id="navbar">
-            <view id="navbar-content">
+            <div id="navbar-content">
                 <h2 id="navbar-icon"><FcGoogle/></h2>
-                <view id="navbar-buttons">
+                <div id="navbar-buttons">
                     <button onClick={searchChange}>Search</button>
                     <button onClick={saveChange}>Saved</button>
-                </view>
-            </view>
+                </div>
+            </div>
         </div>
     )
 }
