@@ -50,6 +50,10 @@ function Search() {
 
         return () => {
             controller.abort();
+            setSearchText("");
+            setLoading(true);
+            setResults([]);
+            pageNum(0);
         }
     }, [pageNum, searchText])
 
