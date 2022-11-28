@@ -5,7 +5,7 @@ function Header() {
     return(
         <div id="header">
             <div id="headerArea">
-                <h1><view id="google-text"><text id="google-blue">G</text><text id="google-red">o</text><text id="google-yellow">o</text><text id="google-blue">g</text><text id="google-green">l</text><text id="google-red">e</text></view> Books Search</h1>
+                <h1><span id="google-text"><span id="google-blue">G</span><span id="google-red">o</span><span id="google-yellow">o</span><span id="google-blue">g</span><span id="google-green">l</span><span id="google-red">e</span></span> Books Search</h1>
                 <h2>Search for and Save Books of Interest</h2>
             </div>
         </div>

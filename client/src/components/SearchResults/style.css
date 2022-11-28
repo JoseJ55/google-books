@@ -1,5 +1,6 @@
 #searchResults {
     width: 88%;
+    height: inherit;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -26,6 +27,15 @@
     row-gap: 5vh;
     margin-bottom: 5vh;
     height: inherit;
+}
+
+#searchResults-loading {
+    width: 100%;
+    padding:2vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
 }
 
 @media screen and (min-width: 2000px) {

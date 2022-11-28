@@ -1,53 +1,47 @@
-import React, { useEffect, useContext, useRef } from "react";
+import React, { useRef, useCallback } from "react";
 import "./style.css";
-import axios from "axios";
 
 import Book from "./../Book/Book";
-import { BookContext } from "./../../bookContext";
 
-function SearchResults(){
-    const {searchedBooks, setSearchedBooks} = useContext(BookContext)
-
+function SearchResults({ results, setPageNum, loading }){
     const resultRef = useRef();
-
-    useEffect(() => {
-        axios.get(`https://www.googleapis.com/books/v1/volumes?q=search-terms&maxResults=20&key=${process.env.REACT_APP_GOOGLE_BOOKS_KEY}`)
-        .then((books) => {
-            setSearchedBooks(books.data.items)
-        })
-        .catch((err) => console.log(err))
-    }, [setSearchedBooks])
-
-    const handelScroll = (event) => {
-        if (resultRef.current) {
-            const { scrollTop, scrollHeight, clientHeight } = resultRef.current;
-
-            if(scrollTop + clientHeight === scrollHeight) {
-                alert("reach the bottom")
+    const lastBook = useCallback(node => {
+        if(resultRef.current) resultRef.current.disconnect();
+        resultRef.current = new IntersectionObserver(entries => {
+            if(entries[0].isIntersecting) {
+                setPageNum(prev => prev + 15);
             }
-        }
-
-    }
+        })
+        if (node) resultRef.current.observe(node);
+    }, []);
 
     return(
-        <div id="searchResults" onScroll={handelScroll} ref={resultRef}>
+        <div id="searchResults">
             <h2>Results</h2>
             <div id="searchResults-books">
-                {searchedBooks
-                .map((data) => (
-                    <Book 
-                        key={data?.id}
-                        id={data?.id}
-                        authors={data?.volumeInfo?.authors}
-                        description={data?.volumeInfo?.description}
-                        image={data?.volumeInfo?.imageLinks?.thumbnail}
-                        link={data?.volumeInfo?.infoLink}
-                        title={data?.volumeInfo?.title}
+                {results
+                .map((data, index) => {
+                    if(results.length === index +1) {
+                        return <Book 
+                            innerRef={lastBook}
+                            key={index}
+                            data={data}
+                            type={"search"}
+                        />
+                    }
+
+                    return <Book 
+                        key={index}
+                        data={data}
                         type={"search"}
                     />
-                ))
+
+                }
+                )
                 }
             </div>
+            
+            <div id="searchResults-loading">{loading && "loading..."}</div>
         </div>
     )
 }
