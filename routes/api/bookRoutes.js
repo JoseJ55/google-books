@@ -5,7 +5,7 @@ router.get("/", async (req, res) => {
     try {
         const googlebooks = await googleBooks.find();
         if (googlebooks.length === 0) {
-            res.json({})
+            res.json([])
             return;
         }
         res.json(googlebooks);

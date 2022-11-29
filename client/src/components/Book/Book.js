@@ -2,24 +2,16 @@ import React, { useContext } from "react";
 import "./style.css";
 import axios from "axios";
 
-import { SavedContext } from "./../../bookContext";
-
-function Book({ data, type, innerRef }) {
-    const { savedBooks, setSavedBooks } = useContext(SavedContext)
-
-    // const pic = new Image();
-    // pic.src = image;
-    // pic.onload= () => {
-    //     console.log(pic.height)
-    // }
-
+function Book({ id, authors, description, image, link, title, type, innerRef, update }) {
     const viewStore = () => {
         // two ways to go to store for the book just in case. 
         // window.location.href = url
-        window.open(data?.volumeInfo?.infoLink, "_blank")
+        window.open(link, "_blank")
     }
 
     const saveBook = async (sId, sAuthors, sDescription, sImage, sLink, sTitle) => {
+        const controller = new AbortController();
+
         try {
             await axios.post("http://localhost:3001/api/book", {
                 bookId: sId,
@@ -28,53 +20,59 @@ function Book({ data, type, innerRef }) {
                 image: sImage,
                 link: sLink,
                 title: sTitle
-            })
+            },
+            {signal: controller.signal})
         } catch (err){
+            if (err.message.includes("Cannot read properties of undefined") && err.message.includes("signal")) {
+                controller.abort();
+                return;
+            }
+
             console.log("Could not add Data!", err)
         }
     }
 
-    const updateBooks = () => {
-        axios.get("http://localhost:3001/api/book/")
-        .then((response) => {
-            setSavedBooks(response.data)
-        })
-    }
-
     const deleteBook = async (dId) => {
+        const controller = new AbortController();
+
         try{
-            await axios.delete(`http://localhost:3001/api/book/${dId}`);
-            updateBooks();
+            await axios.delete(`http://localhost:3001/api/book/${dId}`, {signal: controller.signal});
+            update();
         } catch (err) {
+            if (err.message.includes("Cannot read properties of undefined") && err.message.includes("signal")) {
+                controller.abort();
+                return;
+            }
+
             console.log("Could not Delete data!", err)
         }
     }
 
     return(
         <div className="book" ref={innerRef}>
-            <img className="bookImage" src={data?.volumeInfo?.imageLinks?.thumbnail} alt={`${data?.volumeInfo?.title} cover`} />
+            <img className="bookImage" src={image} alt={`${title} cover`} />
 
             <div className="bookData">
-                <h4>{data?.volumeInfo?.title}</h4>
-                {data?.volumeInfo?.authors == null ? 
+                <h4>{title}</h4>
+                {authors == null ? 
                     <p></p>
                     : 
                     <p className="bookData-author">Written by {
-                        data?.volumeInfo?.authors.length > 1 ? data?.volumeInfo?.authors.map((author) => { return `${author},`}) : data?.volumeInfo?.authors.map((author) => `${author}`)
+                        authors.length > 1 ? authors.map((author) => { return `${author},`}) : authors.map((author) => `${author}`)
                     }</p>
                 }
 
                 <div className="bookData-btn">
-                    <input type="button" value="View" onClick={() => viewStore(data?.volumeInfo?.infoLink)}/>
+                    <input type="button" value="View" onClick={() => viewStore(link)}/>
                     {type === "search" ? 
-                        <input type="button" value="Save" onClick={() => saveBook(data?.id, data?.volumeInfo?.authors, data?.volumeInfo?.description, data?.volumeInfo?.imageLinks?.thumbnail, data?.volumeInfo?.infoLink, data?.volumeInfo?.title)}/> : 
-                        <input type="button" value="Delete" onClick={() => deleteBook(data?.id)}/>}
+                        <input type="button" value="Save" onClick={() => saveBook(id, authors, description, image, link, title)}/> : 
+                        <input type="button" value="Delete" onClick={() => deleteBook(id)}/>}
                 </div>
 
                 <div className="bookData-desc">
-                    {data?.volumeInfo?.description == null || data?.volumeInfo?.description === "" ?
+                    {description == null || description === "" ?
                     <p>There is not description sorry.</p>:
-                    <p>{data?.volumeInfo?.description}</p>
+                    <p>{description}</p>
                     }
                 </div>
             </div>

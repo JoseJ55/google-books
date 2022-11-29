@@ -25,14 +25,24 @@ function SearchResults({ results, setPageNum, loading }){
                         return <Book 
                             innerRef={lastBook}
                             key={index}
-                            data={data}
+                            id={data?.id}
+                            authors={data?.volumeInfo?.authors}
+                            description={data?.volumeInfo.description}
+                            image={data?.volumeInfo?.imageLinks?.thumbnail}
+                            link={data?.volumeInfo?.infoLink}
+                            title={data?.volumeInfo?.title}
                             type={"search"}
                         />
                     }
 
                     return <Book 
                         key={index}
-                        data={data}
+                        id={data?.id}
+                        authors={data?.volumeInfo?.authors}
+                        description={data?.volumeInfo.description}
+                        image={data?.volumeInfo?.imageLinks?.thumbnail}
+                        link={data?.volumeInfo?.infoLink}
+                        title={data?.volumeInfo?.title}
                         type={"search"}
                     />
 
