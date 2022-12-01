@@ -26,7 +26,7 @@
 
 #navbar button {
     align-items: center;
-    padding: 3vh 2vw;
+    padding: 2.5vh 1.5vw;
     margin-left: 1vw;
     border: none;
     background: none;
@@ -41,4 +41,22 @@
     border-radius: 10px 10px 0 0;
     transition: ease-in-out;
     transition-duration: .5s;
+}
+
+@media screen and (min-width: 2000px) {
+    #navbar button {
+        padding: 2vh 1vw;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    #navbar button {
+        padding: 1.5vh .5vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #navbar button {
+        padding: 1vh 1vw;
+    }
 }
