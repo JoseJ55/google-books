@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function SearchBar({ searchText, setSearchText, getBooks, setPageNum }) {
+function SearchBar({ searchText, setSearchText, setPageNum }) {
     const handleChange = (e) => {
         setSearchText(e.target.value);
         setPageNum(0);
