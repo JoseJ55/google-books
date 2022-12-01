@@ -22,8 +22,9 @@
 }
 
 #searchResults-books {
-    display: inline-grid;
-    grid-template-columns: auto auto auto auto auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     row-gap: 5vh;
     margin-bottom: 5vh;
     height: inherit;
@@ -40,7 +41,7 @@
 
 @media screen and (min-width: 2000px) {
     #searchResults-books {
-        grid-template-columns: auto auto auto auto auto auto auto;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     }
     #searchResults {
         width: 73%;
@@ -49,7 +50,7 @@
 
 @media screen and (min-width: 1100px) {
     #searchResults-books {
-        grid-template-columns: auto auto auto auto auto auto;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
     #searchResults {
         width: 78%;
@@ -58,7 +59,7 @@
 
 @media screen and (max-width: 950px) {
     #searchResults-books {
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns: auto auto auto auto auto;
     }
 }
 

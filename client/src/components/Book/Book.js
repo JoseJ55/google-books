@@ -1,8 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./style.css";
 import axios from "axios";
 
 function Book({ id, authors, description, image, link, title, type, innerRef, update }) {
+    const [saveText, setSaveText] = useState("Save");
+    let isPressed = false;
+
     const viewStore = () => {
         // two ways to go to store for the book just in case. 
         // window.location.href = url
@@ -22,6 +25,10 @@ function Book({ id, authors, description, image, link, title, type, innerRef, up
                 title: sTitle
             },
             {signal: controller.signal})
+            .then(() => {
+                setSaveText("Saved")
+                isPressed = true;
+            })
         } catch (err){
             if (err.message.includes("Cannot read properties of undefined") && err.message.includes("signal")) {
                 controller.abort();
@@ -65,7 +72,7 @@ function Book({ id, authors, description, image, link, title, type, innerRef, up
                 <div className="bookData-btn">
                     <input type="button" value="View" onClick={() => viewStore(link)}/>
                     {type === "search" ? 
-                        <input type="button" value="Save" onClick={() => saveBook(id, authors, description, image, link, title)}/> : 
+                        <input type="button" value={saveText} onClick={() => saveBook(id, authors, description, image, link, title)}/> : 
                         <input type="button" value="Delete" onClick={() => deleteBook(id)}/>}
                 </div>
 
