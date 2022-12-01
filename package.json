@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd client && npm run build",
+    "build": "cd client && npm install && npm run build",
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
     "start": "node server.js",
@@ -14,6 +14,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JoseJ55/google-books.git"
+  },
+  "engines": {
+    "node": "18.12.1"
   },
   "author": "",
   "license": "ISC",
